@@ -1,0 +1,27 @@
+.brand-logo{
+    margin-left: 8px;
+}
+
+.title-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 80px;
+    transform: translate(-50%, -50%);
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1; 
+}
+
+.image-container {
+    height: 500px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.addBtn {
+    display: flex;
+    justify-content: center;
+}
