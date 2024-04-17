@@ -26,3 +26,16 @@ $(document).ready(function () {
       });
   });
 });
+
+function deletePet(petId) {
+    $.ajax({
+        url: '/api/pets/' + petId,
+        type: 'DELETE',
+        success: function(result) {
+            $('#pet-' + petId).remove();
+        },
+        error: function(err) {
+            console.log('Error deleting pet:', err);
+        }
+    });
+}
