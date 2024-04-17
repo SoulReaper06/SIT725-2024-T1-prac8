@@ -26,13 +26,3 @@ exports.getPets = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
-
-exports.deletePet = async (req, res) => {
-    try {
-        await Pet.findByIdAndRemove(req.params.petId);
-        res.status(200).json({ message: 'Pet deleted successfully' });
-    } catch (err) {
-        console.error('Failed to delete pet:', err);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-};

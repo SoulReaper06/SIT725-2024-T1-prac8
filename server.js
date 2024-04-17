@@ -26,7 +26,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/submitAdopter', adopterController.submitAdopter);
 app.post('/submitPet', petController.submitPet);
 app.get('/api/pets', petController.getPets);
-app.delete('/api/pets/:petId', petController.deletePet);
 
 app.use(express.static('public'));
 
