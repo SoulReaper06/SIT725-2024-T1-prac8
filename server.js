@@ -27,9 +27,22 @@ app.post('/submitAdopter', adopterController.submitAdopter);
 app.post('/submitPet', petController.submitPet);
 app.get('/api/pets', petController.getPets);
 
+app.get('/addTwonumbers/:firstNumber/:SecondNumber', function(req, res, next) {
+  var firstNumber = parseInt(req.params.firstNumber);
+  var SecondNumber = parseInt(req.params.SecondNumber);
+
+  if (isNaN(firstNumber) || isNaN(SecondNumber)) {
+      res.status(400).json({ error: "Both should be a number" });
+  } else {
+      var result = firstNumber + SecondNumber;
+      res.status(200).json({ result: result });
+  }
+});
+
 app.use(express.static('public'));
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+module.exports = app;
