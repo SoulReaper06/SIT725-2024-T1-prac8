@@ -148,29 +148,10 @@
                 </form>
             </div>
         </div>
-        <h1>Socket.io Test Client</h1>
         <div id="messages"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const socket = io('http://localhost:3000');
-    
-                socket.on('connect', () => {
-                    console.log('Connected to the server');
-                    socket.emit('send-message', 'Hello server!');
-                });
-    
-                socket.on('receive-message', (message) => {
-                    console.log('Message from server:', message);
-                    const msgContainer = document.getElementById('messages');
-                    const msgElement = document.createElement('div');
-                    msgElement.textContent = message;
-                    msgContainer.appendChild(msgElement);
-                });
-            });
-        </script>
         <script src="script.js"></script>
     </body>
     </html>

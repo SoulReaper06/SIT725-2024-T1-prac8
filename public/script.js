@@ -1,13 +1,31 @@
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".modal");
   var instances = M.Modal.init(elems);
+
+  const socket = io("http://localhost:3000");
+
+  socket.on("connect", () => {
+    console.log("Connected to the server");
+    socket.emit("send-message", "Hello server!");
+  });
+
+  socket.on("receive-message", (message) => {
+    console.log("Message from server:", message);
+    const msgContainer = document.getElementById("messages");
+    const msgElement = document.createElement("div");
+    msgElement.textContent = message;
+    msgContainer.appendChild(msgElement);
+  });
+  socket.on('number',(msg)=>{
+    console.log('Random Number: ' + msg);
+  });
 });
 
 $(document).ready(function () {
-  $.get('/api/pets', function (pets) {
-      var cardSection = $('#card-section');
-      pets.forEach(pet => {
-          var cardHtml = `
+  $.get("/api/pets", function (pets) {
+    var cardSection = $("#card-section");
+    pets.forEach((pet) => {
+      var cardHtml = `
           <div class="col s12 m4">
           <div class="card hoverable"> 
               <div class="card-image ">
@@ -22,7 +40,7 @@ $(document).ready(function () {
               </div>
           </div>
       </div>`;
-          cardSection.append(cardHtml);
-      });
+      cardSection.append(cardHtml);
+    });
   });
 });

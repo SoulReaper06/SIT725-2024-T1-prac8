@@ -44,6 +44,9 @@ io.on('connection', (socket) => {
     console.log('Message received:', message);
     io.emit('receive-message', message);
   });
+  setInterval(() => {
+    socket.emit('number',parseInt(Math.random()*10));
+  },1000);
 });
 
 server.listen(PORT, () => {
